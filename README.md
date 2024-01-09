@@ -1,4 +1,4 @@
-# Import Products Application
+<img width="1440" alt="Screenshot 2024-01-10 at 4 00 47 AM" src="https://github.com/shashanksanket/Zentrades-task-2/assets/40575030/c748b4e3-6294-4b57-8194-f40c8382679d"># Import Products Application
 
 This React application is designed to import and display product data from a JSON or CSV file. The application allows users to customize the import settings and choose the columns they want to display in a table.
 
@@ -22,6 +22,8 @@ This React application is designed to import and display product data from a JSO
 - Github repository link to your solution.
 - Time taken to complete this.
 
+##Live Link:
+https://shashanksanket.github.io/Zentrades-task-2/
 ## Getting Started
 
 Follow these steps to set up and run the application:
@@ -110,6 +112,7 @@ The `Checkbox` component is used to toggle the header option.
 
 The application can be deployed on platforms like Heroku or GitHub Pages. Follow the deployment instructions provided by the chosen platform.
 
+
 ## Dependencies
 
 - [React](https://reactjs.org/)
@@ -123,3 +126,6 @@ The application can be deployed on platforms like Heroku or GitHub Pages. Follow
 - Built with [React](https://reactjs.org/) and [Tailwind CSS](https://tailwindcss.com/).
 
 ---
+
+## Images
+![Uploading Screenshot 2024-01-10 at 4.00.47 AM.png…]()
