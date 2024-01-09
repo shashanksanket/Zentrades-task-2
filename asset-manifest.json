@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Zentrades-task-2/static/css/main.8f87e65f.css",
-    "main.js": "/Zentrades-task-2/static/js/main.7eafef6e.js",
+    "main.js": "/Zentrades-task-2/static/js/main.ce8f21ab.js",
     "static/js/787.caca3905.chunk.js": "/Zentrades-task-2/static/js/787.caca3905.chunk.js",
     "index.html": "/Zentrades-task-2/index.html",
     "main.8f87e65f.css.map": "/Zentrades-task-2/static/css/main.8f87e65f.css.map",
-    "main.7eafef6e.js.map": "/Zentrades-task-2/static/js/main.7eafef6e.js.map",
+    "main.ce8f21ab.js.map": "/Zentrades-task-2/static/js/main.ce8f21ab.js.map",
     "787.caca3905.chunk.js.map": "/Zentrades-task-2/static/js/787.caca3905.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.8f87e65f.css",
-    "static/js/main.7eafef6e.js"
+    "static/js/main.ce8f21ab.js"
   ]
 }
