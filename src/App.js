@@ -148,8 +148,8 @@ function App() {
         <div className="px-7 py-4">
           <p className='my-3'>Import Products</p>
           <div className='gap-y-2 flex flex-col'>
-            <div className='flex justify-between gap-x-4'>
-              <div className='w-full flex border px-7 py-10 gap-x-10 shadow'>
+            <div className='inline-block md:flex  justify-between gap-x-4'>
+              <div className='w-full flex flex-wrap border px-7 py-10 gap-x-10 shadow'>
                 <p>Step 1:</p>
                 <div className='flex flex-col'>
                   <p className=''>Select File</p>
@@ -157,7 +157,7 @@ function App() {
                   <p className='my-4'>Supported File Type{`(s)`}: .CSV .JSON</p>
                 </div>
               </div>
-              <div className='w-full flex border px-7 py-10 gap-x-10 shadow'>
+              <div className='w-full flex flex-wrap border px-7 py-10 gap-x-10 shadow'>
                 <p>Step 2:</p>
                 <div className='flex flex-col'>
                   <p className=''>Specify Format</p>
@@ -176,7 +176,7 @@ function App() {
                 </div>
               </div>
             </div>
-            <div className='w-full my-2 flex border px-7 py-10 gap-x-10 shadow'>
+            <div className='w-full my-2 flex flex-wrap border px-7 py-10 gap-x-10 shadow'>
               <div className='w-auto flex items-start'>
                 <input className='mt-1 mx-2' onClick={()=>{handleCheck()}} type='checkbox' />
                 <p>Step 3:</p>

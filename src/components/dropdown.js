@@ -12,7 +12,7 @@ const Dropdown = ({ options, onSelect, label }) => {
         <div className='flex items-end my-2 gap-x-12 justify-between '>
             <label className=''>{label}</label>
             <select
-                className='border rounded-lg h-10 w-72 p-2'
+                className='border rounded-lg h-10 md:w-72 w-full p-2'
                 value={selectedOption}
                 onChange={(e) => handleSelect(e.target.value)}
             >
