@@ -1,70 +1,125 @@
-# Getting Started with Create React App
+# Import Products Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This React application is designed to import and display product data from a JSON or CSV file. The application allows users to customize the import settings and choose the columns they want to display in a table.
 
-## Available Scripts
+## Problem Statement
 
-In the project directory, you can run:
+**Task:** Download the JSON file from [https://s3.amazonaws.com/open-to-cors/assignment.json](https://s3.amazonaws.com/open-to-cors/assignment.json). The JSON file contains 1000 records of products, each having four attributes: Subcategory, Title, Price, and Popularity.
 
-### `npm start`
+**Requirements:**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Create a UI to import the data in the browser and display it as specified in the provided image file (`Import_products_Screen_1.png`).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2. The UI should have options to handle the display of columns in the table with multi-select functionality.
 
-### `npm test`
+3. Implement the ">>" and "<<" buttons to add and remove selected options from the Available Fields List to Fields to be displayed List and vice versa.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+4. Display the data in a table format of your choice with Title and Price ordered based on descending popularity.
 
-### `npm run build`
+**Deliverables:**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Hosting URL on Heroku / Github pages.
+- Github repository link to your solution.
+- Time taken to complete this.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Getting Started
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Follow these steps to set up and run the application:
 
-### `npm run eject`
+### Prerequisites
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Make sure you have Node.js and npm installed on your machine.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Installation
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Clone the repository:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+   ```bash
+   git clone https://github.com/shashanksanket/Zentrades-task-2.git
+   ```
 
-## Learn More
+2. Change into the project directory:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   ```bash
+   cd Zentrades-task-2
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+3. Install dependencies:
 
-### Code Splitting
+   ```bash
+   npm install
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Usage
 
-### Analyzing the Bundle Size
+1. Run the application:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+   ```bash
+   npm start
+   ```
 
-### Making a Progressive Web App
+2. Open your web browser and navigate to [http://localhost:3000](http://localhost:3000).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+3. Follow the on-screen instructions to import and display product data.
 
-### Advanced Configuration
+## Features
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- **Step 1: Select File**
+  - Choose a file (CSV or JSON) for importing data.
 
-### Deployment
+- **Step 2: Specify Format**
+  - Select file type, character encoding, and delimiter.
+  - Choose whether the file has a header.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- **Step 3: Display Heading**
+  - Choose fields to be displayed in the table.
+  - Multi-select functionality for available and displayed fields.
 
-### `npm run build` fails to minify
+- **Table Display**
+  - View imported data in a table format.
+  - Sort data by Title and Price based on descending popularity.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Components
+
+### Dropdown
+
+The `Dropdown` component is used for selecting file type, character encoding, and delimiter.
+
+### Checkbox
+
+The `Checkbox` component is used to toggle the header option.
+
+## Folder Structure
+
+```
+|-- public
+|-- src
+    |-- components
+        |-- checkbox.js
+        |-- dropdown.js
+    |-- App.css
+    |-- App.js
+    |-- index.css
+    |-- index.js
+|-- .gitignore
+|-- package.json
+|-- README.md
+```
+
+## Deployment
+
+The application can be deployed on platforms like Heroku or GitHub Pages. Follow the deployment instructions provided by the chosen platform.
+
+## Dependencies
+
+- [React](https://reactjs.org/)
+- [PapaParse](https://www.papaparse.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
+
+
+## Acknowledgments
+
+- Thanks to [PapaParse](https://www.papaparse.com/) for simplifying CSV parsing in the browser.
+- Built with [React](https://reactjs.org/) and [Tailwind CSS](https://tailwindcss.com/).
+
+---
