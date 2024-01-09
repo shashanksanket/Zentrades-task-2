@@ -1,34 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Dropdown from './components/dropdown';
 import Checkbox from './components/checkbox';
-import Papa from "papaparse";
+import Papa from 'papaparse';
 
-const fileType = [
+const fileTypeOptions = [
+  { label: 'Select File', value: null },
   { label: 'CSV', value: 'CSV' },
   { label: 'JSON', value: 'JSON' },
 ];
-const encodings = [
+const encodingOptions = [
   { label: 'UTF-8', value: 'UTF-8' },
 ];
-const Delimiter = [
+const delimiterOptions = [
   { label: 'comma', value: 'comma' },
 ];
 
 function App() {
   const [fields, setFields] = useState([]);
   const [headers, setHeaders] = useState([]);
-  const [isHeader, setIsHeader] = useState(true)
-  const [values, setValues] = useState([]);
+  const [isHeader, setIsHeader] = useState(true);
   const [selectedField, setSelectedField] = useState(null);
   const [displayedData, setDisplayedData] = useState([]);
-  const [isTable, setIsTable] = useState(false)
-  const [isCheck,setIscheck] = useState(false)
+  const [isTable, setIsTable] = useState(false);
+  const [isCheck, setIsCheck] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(null);
+  const [file, setFile] = useState(null);
+
+  useEffect(() => {
+    if (selectedOption) {
+      processFiles(selectedOption);
+    }
+  }, [selectedOption]);
+
   const handleCheckboxChange = (isChecked) => {
-    setIsHeader(isChecked)
+    setIsHeader(isChecked);
   };
+
   const handleSelect = (selectedOption) => {
-    console.log(`Selected option: ${selectedOption}`);
+    setSelectedOption(selectedOption);
   };
 
   const addToFields = () => {
@@ -36,31 +46,73 @@ function App() {
       setFields([...fields, selectedField]);
     }
   };
+
   const handleCheck = () => {
-    setIscheck(!isCheck)
-  }
+    setIsCheck(!isCheck);
+  };
+
   const removeFromFields = () => {
     if (selectedField && fields.includes(selectedField)) {
       setFields(fields.filter((field) => field !== selectedField));
     }
   };
-  const changeHandler = (event) => {
-    Papa.parse(event.target.files[0], {
-      header: isHeader,
-      skipEmptyLines: true,
-      complete: function (results) {
-        const rowsArray = [];
-        const valuesArray = [];
-        results.data.map((d) => {
-          rowsArray.push(Object.keys(d));
-          valuesArray.push(Object.values(d));
-        });
-        setHeaders(rowsArray[0]);
-        setValues(valuesArray);
-        setDisplayedData(valuesArray);
-      },
-    });
+
+  const processFiles = (fileType) => {
+    setHeaders([]);
+    setDisplayedData([]);
+    setFields([]);
+    if (fileType === 'CSV') {
+      Papa.parse(file, {
+        header: isHeader,
+        skipEmptyLines: true,
+        complete: function (results) {
+          const rowsArray = results.data.map((d) => Object.keys(d));
+          const valuesArray = results.data.map((d) => Object.values(d));
+          setHeaders(rowsArray[0]);
+          setDisplayedData(valuesArray);
+        },
+      });
+    } else if (fileType === 'JSON') {
+      jsonReader(file);
+    }
   };
+
+  const changeHandler = (event) => {
+    setFile(event.target.files[0]);
+  };
+
+  const jsonReader = (filename) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      try {
+        const jsonData = JSON.parse(e.target.result);
+        parseJsonFileForProducts(jsonData);
+      } catch (error) {
+        console.error('Error parsing JSON:', error);
+      }
+    };
+    reader.readAsText(filename);
+  };
+
+  const parseJsonFileForProducts = (data) => {
+    const propertiesArray = [];
+    const valuesArray = [];
+
+    for (const productId in data.products) {
+      if (data.products.hasOwnProperty(productId)) {
+        const productInfo = data.products[productId];
+
+        if (propertiesArray.length === 0) {
+          propertiesArray.push(...Object.keys(productInfo));
+        }
+
+        valuesArray.push(Object.values(productInfo));
+      }
+    }
+    setHeaders(propertiesArray);
+    setDisplayedData(valuesArray);
+  };
+
   return (
     <div>
       {isTable ? (
@@ -110,13 +162,13 @@ function App() {
                 <div className='flex flex-col'>
                   <p className=''>Specify Format</p>
                   <div className=''>
-                    <Dropdown label='File Type' options={fileType} onSelect={handleSelect} />
+                    <Dropdown label='File Type' options={fileTypeOptions} onSelect={handleSelect} />
                   </div>
                   <div>
-                    <Dropdown label='Character Encoding' options={encodings} onSelect={handleSelect} />
+                    <Dropdown label='Character Encoding' options={encodingOptions} onSelect={handleSelect} />
                   </div>
                   <div>
-                    <Dropdown label='Delimiter' options={Delimiter} onSelect={handleSelect} />
+                    <Dropdown label='Delimiter' options={delimiterOptions} onSelect={handleSelect} />
                   </div>
                   <div className=''>
                     <Checkbox label='Has Header' onChange={handleCheckboxChange} />
